@@ -26,4 +26,11 @@ public class PlayerMove : MonoBehaviour
         pos.y = Mathf.Clamp(transform.position.y, -4.5f, 4.5f);
         transform.position = pos;
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Goal")
+        {
+            Debug.Log("GAMECLEAR");
+        }
+    }
 }
