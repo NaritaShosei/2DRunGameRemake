@@ -20,11 +20,9 @@ public class LifeSystem : MonoBehaviour
             Debug.Log("GAMEOVER");
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Life(float damage)
     {
-        if (collision.gameObject.tag == "Damage")
-        {
-            _life--;
-        }
+        _life -= damage;
+        Debug.Log(_life);
     }
 }
