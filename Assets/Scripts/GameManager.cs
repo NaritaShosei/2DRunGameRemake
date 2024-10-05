@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         {
             _timeLimit += Time.deltaTime;
             var pos = playerPos;
-            pos.y += 2.2f * Time.deltaTime;
+            pos.y += 6f * Time.deltaTime;
             playerPos = pos;
         }
         Debug.Log(_timeLimit.ToString("000.000"));

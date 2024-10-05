@@ -26,6 +26,7 @@ public class DamageItem : MonoBehaviour
         {
             var life = collision.gameObject.GetComponent<LifeSystem>();
             life.Life(_damage);
+            Destroy(gameObject);
         }
     }
 }
