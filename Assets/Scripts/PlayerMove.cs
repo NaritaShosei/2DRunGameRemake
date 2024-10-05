@@ -21,6 +21,10 @@ public class PlayerMove : MonoBehaviour
         vel.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
         vel.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
         _rb.velocity = vel;
+        if (Input.GetButton("Fire3"))
+        {
+            _rb.velocity = vel * 1.5f;
+        }
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, -2.7f, 2.7f);
         pos.y = Mathf.Clamp(transform.position.y, -4.5f, 4.5f);
