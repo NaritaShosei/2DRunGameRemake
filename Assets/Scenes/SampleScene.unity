@@ -158,13 +158,9 @@ MonoBehaviour:
   _spawnPosition:
   - {fileID: 985080650}
   - {fileID: 1857593111}
-  - {fileID: 8404084772430321183, guid: b508ce56b97e47043a2d5afd04402caf, type: 3}
-  _waitTimeVertical:
+  _waitTime:
   - 1
   - 2
-  _waitTimeHorizontal:
-  - 0
-  - 0
   _generatorType: 0
 --- !u!4 &23584129
 Transform:
@@ -213,10 +209,9 @@ MonoBehaviour:
   _item: []
   _horizontalItem: {fileID: 523156183459757134, guid: 14b4d8566f4936b49b045f8ad7507edc, type: 3}
   _spawnPosition: []
-  _waitTimeVertical: []
-  _waitTimeHorizontal:
-  - 5
-  - 4
+  _waitTime:
+  - 3
+  - 2
   _generatorType: 1
 --- !u!4 &82198923
 Transform:
@@ -450,7 +445,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db403492e29015a41980a5b1ef0bbf03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _changeLifeValue: 1
+  _itemType: 0
 --- !u!1 &314173041
 GameObject:
   m_ObjectHideFlags: 0
@@ -529,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 314173041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.02}
   m_LocalScale: {x: 6.0069466, y: 10.220833, z: 0.68887}
   m_ConstrainProportionsScale: 0
   m_Children: []
