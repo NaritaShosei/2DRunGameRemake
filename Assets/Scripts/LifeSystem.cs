@@ -23,6 +23,6 @@ public class LifeSystem : MonoBehaviour
     public void Life(float damage)
     {
         _life -= damage;
-        Debug.Log(_life);
+        Debug.Log("ƒ‰ƒCƒt" + _life);
     }
 }
