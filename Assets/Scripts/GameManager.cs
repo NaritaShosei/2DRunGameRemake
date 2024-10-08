@@ -13,14 +13,7 @@ public class GameManager : MonoBehaviour
     {
         var player = FindObjectOfType<PlayerMove>();
         var goal = FindObjectOfType<ItemMove>();
-        Vector2 playerPos = player.transform.position;
-        while (playerPos.y <= goal.transform.position.y)
-        {
-            _timeLimit += Time.deltaTime;
-            var pos = playerPos;
-            pos.y += 6f * Time.deltaTime;
-            playerPos = pos;
-        }
+        _timeLimit = Vector2.Distance(player.transform.position, goal.transform.position) / 6f;
         Debug.Log(_timeLimit.ToString("000.000"));
     }
 
