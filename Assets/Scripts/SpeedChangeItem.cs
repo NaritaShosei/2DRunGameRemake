@@ -7,6 +7,7 @@ public class SpeedChangeItem : ItemManager
     [SerializeField] float _speedChangeValue;
     public override void Activate()
     {
-        FindObjectOfType<PlayerMove>().Speed(_speedChangeValue);
+        FindObjectOfType<PlayerMove>().SpeedChange(_speedChangeValue);
+        FindObjectOfType<ItemMove>().SpeedChange(_speedChangeValue);
     }
 }

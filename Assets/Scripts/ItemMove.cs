@@ -6,6 +6,9 @@ using UnityEngine;
 public class ItemMove : MonoBehaviour
 {
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _minSpeedChangeValue;
+    [SerializeField] float _maxSpeedChangeValue = 5;
+    float _speedChangeValue = 1;
     Rigidbody2D _rb;
     // Start is called before the first frame update
     void Start()
@@ -17,9 +20,10 @@ public class ItemMove : MonoBehaviour
     void Update()
     {
         _rb.velocity = Vector2.down * _moveSpeed;
-        //if (Input.GetButton("Fire3"))
-        //{
-        //    _rb.velocity = Vector2.down * _moveSpeed * 1.5f;
-        //}
+    }
+     public void SpeedChange(float value)
+    {
+        _speedChangeValue += value;
+        _speedChangeValue = Mathf.Clamp(_speedChangeValue, _minSpeedChangeValue, _maxSpeedChangeValue);
     }
 }
