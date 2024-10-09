@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 4632066732283581713}
   - component: {fileID: 3064085252570321119}
   - component: {fileID: 1440540275202104972}
-  - component: {fileID: 8654555065031733582}
   - component: {fileID: 2980099079436463883}
   - component: {fileID: 8125239394587845945}
+  - component: {fileID: 6784879853452100601}
   m_Layer: 0
   m_Name: DamageObject (1)
   m_TagString: Damage
@@ -133,19 +133,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &8654555065031733582
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 523156183459757134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db403492e29015a41980a5b1ef0bbf03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1
 --- !u!50 &2980099079436463883
 Rigidbody2D:
   serializedVersion: 4
@@ -186,3 +173,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
+--- !u!114 &6784879853452100601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523156183459757134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5519eddc5af7146bf2d4220b43a34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 1
+  _lifeChangeValue: -1

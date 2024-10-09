@@ -7,6 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     [SerializeField] float _moveSpeed;
     Rigidbody2D _rb;
+    float _speedChangeValue = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -20,15 +21,20 @@ public class PlayerMove : MonoBehaviour
         Vector3 vel = _rb.velocity;
         vel.x = Input.GetAxisRaw("Horizontal") * _moveSpeed;
         vel.y = Input.GetAxisRaw("Vertical") * _moveSpeed;
-        _rb.velocity = vel;
-        if (Input.GetButton("Fire3"))
-        {
-            _rb.velocity = vel * 1.5f;
-        }
+        _rb.velocity = vel * _speedChangeValue;
+        //if (Input.GetButton("Fire3"))
+        //{
+        //    _rb.velocity = vel * 1.5f;
+        //}
         Vector3 pos = transform.position;
         pos.x = Mathf.Clamp(transform.position.x, -2.7f, 2.7f);
         pos.y = Mathf.Clamp(transform.position.y, -4.5f, 4.5f);
         transform.position = pos;
+    }
+
+    public void Speed(float value)
+    {
+        _speedChangeValue += value;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

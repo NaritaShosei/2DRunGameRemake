@@ -17,9 +17,9 @@ public class ItemMove : MonoBehaviour
     void Update()
     {
         _rb.velocity = Vector2.down * _moveSpeed;
-        if (Input.GetButton("Fire3"))
-        {
-            _rb.velocity = Vector2.down * _moveSpeed * 1.5f;
-        }
+        //if (Input.GetButton("Fire3"))
+        //{
+        //    _rb.velocity = Vector2.down * _moveSpeed * 1.5f;
+        //}
     }
 }

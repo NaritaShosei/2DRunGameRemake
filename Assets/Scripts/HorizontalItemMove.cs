@@ -13,13 +13,4 @@ public class HorizontalItemMove : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _rb.velocity = new Vector3(transform.position.x <= 0 ? 1 : -1, 0, 0) * _moveSpeed;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Mathf.Abs(transform.position.x) > 6)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

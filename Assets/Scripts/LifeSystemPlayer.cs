@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LifeSystem : MonoBehaviour
+public class LifeSystemPlayer : MonoBehaviour
 {
     [SerializeField] float _maxLife;
     float _life;
