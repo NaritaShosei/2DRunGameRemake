@@ -20,9 +20,9 @@ public class LifeSystemPlayer : MonoBehaviour
             Debug.Log("GAMEOVER");
         }
     }
-    public void Life(float damage)
+    public void Life(float value)
     {
-        _life -= damage;
+        _life += value;
         Debug.Log("ƒ‰ƒCƒt" + _life);
     }
 }

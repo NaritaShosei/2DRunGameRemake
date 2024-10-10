@@ -19,7 +19,7 @@ public class ItemMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _rb.velocity = Vector2.down * _moveSpeed;
+        _rb.velocity = Vector2.down * _moveSpeed * _speedChangeValue;
     }
      public void SpeedChange(float value)
     {
