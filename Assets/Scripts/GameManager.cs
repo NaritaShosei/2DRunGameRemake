@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static float _score;
-    float _defaultScoreValue = 1000;
+    int _scoreUpValue = 0;
     float _defaultScoreDistanceMagnification = 5;
     float _scoreDistanceMagnification;
     float _defaultScoreTimeLimitMagnification = 5;
@@ -14,33 +14,46 @@ public class GameManager : MonoBehaviour
     float _timeLimit;
     float _lastTimeLimit;
     [SerializeField] Text _text;
-    // Start is called before the first frame update
+    PlayerMove _player;
+    ItemMove _goal;
+    float _distance;
+    float _startDistance;
+    Image _slider;
+
     void Start()
     {
         _score = 0;
-        var player = FindObjectOfType<PlayerMove>();
-        var goal = FindObjectOfType<ItemMove>();
-        float dis = Vector2.Distance(player.transform.position, goal.transform.position);
-        goal.transform.position = new Vector2(goal.transform.position.x, DistanceChangeSlider._distance);
-        _timeLimit = dis / 6f;
+        _slider = GameObject.FindWithTag("Slider").GetComponent<Image>();
+        _player = FindObjectOfType<PlayerMove>();
+        _goal = FindObjectOfType<ItemMove>();
+        _distance = Vector2.Distance(_player.transform.position, _goal.transform.position);
+        _startDistance = _distance;
+        _goal.transform.position = new Vector2(_goal.transform.position.x, DistanceChangeSlider._distance);
+        _timeLimit = _distance / 6f;
         _lastTimeLimit = _timeLimit;
-        _scoreDistanceMagnification = dis / DistanceChangeSlider._max * _defaultScoreDistanceMagnification;
-        goal.transform.position = new Vector2(goal.transform.position.x, DistanceChangeSlider._distance);
-        _timeLimit = Vector2.Distance(player.transform.position, goal.transform.position) / 6f;
+        _scoreDistanceMagnification = _distance / DistanceChangeSlider._max * _defaultScoreDistanceMagnification;
+        _timeLimit = Vector2.Distance(_player.transform.position, _goal.transform.position) / 6f;
         Debug.Log(_timeLimit.ToString("000.000"));
         Debug.Log(_timeLimit * 6);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         _timeLimit -= Time.deltaTime;
         _text.text = _timeLimit.ToString("000.000");
+        _distance = Vector2.Distance(transform.position, _goal.transform.position);
+        _slider.fillAmount = _distance / _startDistance;
     }
     public void Score()
     {
         _scoreTimeLimitMagnification = _lastTimeLimit / _timeLimit * _defaultScoreTimeLimitMagnification;
-        _score = _defaultScoreValue * _scoreTimeLimitMagnification * _scoreDistanceMagnification;
+        _score = ((_distance * 10) + 500 * _scoreUpValue) * _scoreTimeLimitMagnification * _scoreDistanceMagnification;
         Debug.LogWarning(_score.ToString());
+    }
+
+    public void ScoreUp(int value)
+    {
+        _scoreUpValue += value;
     }
 }

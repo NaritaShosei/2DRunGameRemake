@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScoreUpItem : MonoBehaviour
+public class ScoreUpItem : ItemManager
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int _scoreChangeValue = 1;
+    public override void Activate()
     {
-        
+        FindObjectOfType<GameManager>().ScoreUp(_scoreChangeValue);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
