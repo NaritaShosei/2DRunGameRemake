@@ -40,6 +40,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.tag == "Goal")
         {
             Debug.Log("GAMECLEAR");
+            SceneChangeController.SceneChange("Ranking");
             var gameManager = FindObjectOfType<GameManager>();
             gameManager.Score();
         }

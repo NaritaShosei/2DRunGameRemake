@@ -26,13 +26,10 @@ public class GameManager : MonoBehaviour
         _slider = GameObject.FindWithTag("Slider").GetComponent<Image>();
         _player = FindObjectOfType<PlayerMove>();
         _goal = FindObjectOfType<ItemMove>();
-        _distance = Vector2.Distance(_player.transform.position, _goal.transform.position);
-        _startDistance = _distance;
         _goal.transform.position = new Vector2(_goal.transform.position.x, DistanceChangeSlider._distance);
-        _timeLimit = _distance / 6f;
-        _lastTimeLimit = _timeLimit;
+        _startDistance = _distance = Vector2.Distance(_player.transform.position, _goal.transform.position);
+        _timeLimit = _lastTimeLimit = _distance / 6f;
         _scoreDistanceMagnification = _distance / DistanceChangeSlider._max * _defaultScoreDistanceMagnification;
-        _timeLimit = Vector2.Distance(_player.transform.position, _goal.transform.position) / 6f;
         Debug.Log(_timeLimit.ToString("000.000"));
         Debug.Log(_timeLimit * 6);
     }
@@ -40,8 +37,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        _timeLimit -= Time.deltaTime;
-        _text.text = _timeLimit.ToString("000.000");
+        _lastTimeLimit -= Time.deltaTime;
+        _text.text = _lastTimeLimit.ToString("000.000");
         _distance = Vector2.Distance(transform.position, _goal.transform.position);
         _slider.fillAmount = _distance / _startDistance;
     }
@@ -49,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         _scoreTimeLimitMagnification = _lastTimeLimit / _timeLimit * _defaultScoreTimeLimitMagnification;
         _score = ((_distance * 10) + 500 * _scoreUpValue) * _scoreTimeLimitMagnification * _scoreDistanceMagnification;
-        Debug.LogWarning(_score.ToString());
+        Debug.LogWarning(_score.ToString("000000"));
     }
 
     public void ScoreUp(int value)
