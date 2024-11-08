@@ -54,6 +54,18 @@ public class ScoreManager : MonoBehaviour
         PlayerPrefs.SetString(dataName, data);
     }
 
+    public void RankingReset()
+    {
+        for (int i = 0; i < _scores.Count; i++)
+        {
+            _scores[i] = 0;
+        }
+        for (int i = 0; i < ((_scores.Count > 5) ? 5 : _scores.Count); i++)
+        {
+            _text[i].text = _scores[i].ToString("000000");
+        }
+        Save();
+    }
     [Serializable]
     class SaveData
     {

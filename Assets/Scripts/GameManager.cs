@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static float _score;
-    int _scoreUpValue = 0;
+    int _scoreUpCount = 0;
     float _defaultScoreDistanceMagnification = 5;
     float _scoreDistanceMagnification;
     float _defaultScoreTimeLimitMagnification = 5;
@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     public void Score()
     {
         _scoreTimeLimitMagnification = _lastTimeLimit / _timeLimit * _defaultScoreTimeLimitMagnification;
-        _score = ((_distance * 10) + 500 * _scoreUpValue) * _scoreTimeLimitMagnification * _scoreDistanceMagnification;
+        _score = (_lastTimeLimit * 100 + 500 * _scoreUpCount) * _scoreTimeLimitMagnification * _scoreDistanceMagnification;
         Debug.LogWarning(_score.ToString("000000"));
     }
 
-    public void ScoreUp(int value)
+    public void ScoreUp(int count)
     {
-        _scoreUpValue += value;
+        _scoreUpCount += count;
     }
 }
