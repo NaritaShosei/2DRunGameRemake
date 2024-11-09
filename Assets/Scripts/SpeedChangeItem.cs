@@ -9,5 +9,6 @@ public class SpeedChangeItem : ItemManager
     {
         FindObjectOfType<PlayerMove>().SpeedChange(_speedChangeValue);
         FindObjectOfType<ItemMove>().SpeedChange(_speedChangeValue);
+        FindObjectOfType<Background>().SpeedChange(_speedChangeValue);
     }
 }

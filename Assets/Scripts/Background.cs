@@ -32,10 +32,10 @@ public class Background : MonoBehaviour
         {
             rb.velocity = new Vector2(0, -_moveSpeed * _speedChangeValue);
         }
-        if (_backgroundList[_indexCount].transform.position.y <= -_spriteHeight)
+        if (_backgroundList[_indexCount].transform.position.y < -_spriteHeight)
         {
             var pos = _backgroundList[_indexCount].transform.position;
-            pos.y = _spriteHeight * 2;
+            pos.y = _spriteHeight * 1.9f;
             _backgroundList[_indexCount].transform.position = pos;
             _indexCount = (_indexCount + 1) % _backgroundList.Count;
         }
