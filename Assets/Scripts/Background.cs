@@ -6,6 +6,9 @@ public class Background : MonoBehaviour
 {
     [SerializeField] List<GameObject> _backgroundList = new();
     [SerializeField] float _moveSpeed;
+    [SerializeField] float _minSpeedChangeValue = 0.5f;
+    [SerializeField] float _maxSpeedChangeValue = 5;
+    float _speedChangeValue = 1;
     List<Rigidbody2D> _rbList = new();
     float _spriteHeight;
     int _indexCount;
@@ -20,15 +23,15 @@ public class Background : MonoBehaviour
             _rbList.Add(_backgroundList[i].GetComponent<Rigidbody2D>());
         }
         Debug.Log(_spriteHeight);
-        foreach (var rb in _rbList)
-        {
-            rb.velocity = new Vector2(0, -_spriteHeight);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        foreach (var rb in _rbList)
+        {
+            rb.velocity = new Vector2(0, -_moveSpeed * _speedChangeValue);
+        }
         if (_backgroundList[_indexCount].transform.position.y <= -_spriteHeight)
         {
             var pos = _backgroundList[_indexCount].transform.position;
@@ -36,5 +39,11 @@ public class Background : MonoBehaviour
             _backgroundList[_indexCount].transform.position = pos;
             _indexCount = (_indexCount + 1) % _backgroundList.Count;
         }
+    }
+
+    public void SpeedChange(float value)
+    {
+        _speedChangeValue += value;
+        _speedChangeValue = Mathf.Clamp(_speedChangeValue, _minSpeedChangeValue, _maxSpeedChangeValue);
     }
 }
